@@ -1,87 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Validation Prediction</title>
-</head>
-<body>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <h1>Predict Business Validation</h1>
-    <form action="/predict" method="POST">
-        <label for="city">City:</label>
-        <input type="number" step="0.01" name="city" required><br>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Business Validation Prediction</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<style>
+        body {
+            background-color: #f8f9fa;
+            padding: 2rem;
+        }
 
-        <label for="state">State:</label>
-        <input type="number" step="0.01" name="state" required><br>
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-        <label for="stars">Stars:</label>
-        <input type="number" step="0.01" name="stars" required><br>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
 
-        <label for="review_count_x">Review Count x:</label>
-        <input type="number" step="0.01" name="review_count_x" required><br>
+        label {
+            font-weight: bold;
+        }
 
-        <label for="avg_review_stars">Avg Review stars:</label>
-        <input type="number" step="0.01" name="avg_review_stars" required><br>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
 
-        <label for="review_count_y">Review Count y:</label>
-        <input type="number" step="0.01" name="review_count_y" required><br>
+        button {
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 0.75rem;
+        }
+        .form-scroll {
+            max-height: 400px; /* Adjust this height as needed */
+            overflow-y: auto;
+        }
+		
+		
+		</style>
+		<script>
+        function showFields() {
+            // Hide all fields initially
+            let fields = document.querySelectorAll('.field-group');
+            fields.forEach(field => field.style.display = 'block');
 
-        <label for="total_useful_votes">Total useful votes:</label>
-        <input type="number" step="0.01" name="total_useful_votes" required><br>
+            // Get the selected model
+            let model = document.getElementById('modelSelect').value;
 
-        <label for="elite_user_count">Elite user count:</label>
-        <input type="number" step="0.01" name="elite_user_count" required><br>
-
-        <label for="review_count_per_bussiness">Review count per business:</label>
-        <input type="number" step="0.01" name="review_count_per_bussiness" required><br>
-
-        <label for="avg_fans_per_reviewer">Avg fans per reviewer:</label>
-        <input type="number" step="0.01" name="avg_fans_per_reviewer" required><br>
-
-        <label for="checkin_count">Checkin count:</label>
-        <input type="number" step="0.01" name="checkin_count" required><br>
-
-        <label for="tip_count">Tip count:</label>
-        <input type="number" step="0.01" name="tip_count" required><br>
-
-        <label for="total_compliments">Total compliments:</label>
-        <input type="number" step="0.01" name="total_compliments" required><br>
-
-        <label for="RestaurantsDelivery">Restaurants delivery:</label>
-        <input type="number" step="0.01" name="RestaurantsDelivery" required><br>
-
-        <label for="OutdoorSeating">Outdoor seating:</label>
-        <input type="number" step="0.01" name="OutdoorSeating" required><br>
-
-        <label for="BusinessAcceptsCreditCards">Business Accepts Credit card:</label>
-        <input type="number" step="0.01" name="BusinessAcceptsCreditCards" required><br>
-
-        <label for="BikeParking">Bike Parking:</label>
-        <input type="number" step="0.01" name="BikeParking" required><br>
-
-        <label for="RestaurantsTakeOut">Restaurants takeout:</label>
-        <input type="number" step="0.01" name="RestaurantsTakeOut" required><br>
-
-        <label for="WiFi">Wifi:</label>
-        <input type="number" step="0.01" name="WiFi" required><br>
-
-        <label for="Caters">Caters:</label>
-        <input type="number" step="0.01" name="Caters" required><br>
-
-        <label for="WheelchairAccessible">Wheelchair Accessible:</label>
-        <input type="number" step="0.01" name="WheelchairAccessible" required><br>
-
-        <label for="BusinessParking">Business Parking:</label>
-        <input type="number" step="0.01" name="BusinessParking" required><br>
-
-        <label for="RestaurantsPriceRange2">Restaurants price range 2:</label>
-        <input type="number" step="0.01" name="RestaurantsPriceRange2" required><br>
-
-        <label for="weekly_hours">Weekly hours:</label>
-        <input type="number" step="0.01" name="weekly_hours" required><br>
-
-        <button type="submit">Submit</button>
-    </form>
-</body>
+            // Show fields based on model selection
+            if (model === 'model1') {
+                document.querySelectorAll('.model2').forEach(field => field.style.display = 'none');
+            } 
+            // else if (model === 'model2') {
+            //     document.querySelectorAll('.model2').forEach(field => field.style.display = 'block');
+            // } else if (model === 'model3') {
+            //     document.querySelectorAll('.model3').forEach(field => field.style.display = 'block');
+            // }
+        }
+    
+		
+		
+		</script>
+	</head>
+	<body>
+		<h1>Predict Business Validation</h1>
+		<form action="/predict" method="POST">
+			<div class="form-group">
+				<label for="modelSelect">Select Model:</label>
+				<select id="modelSelect" name="model" onchange="showFields()" required="">
+					<option value="">--Select a Model--</option>
+					<option value="model1">Decision Tree</option>
+					<option value="model2">Random Forest</option>
+					<option value="model3">AdaBoost</option>
+				</select>
+				<br>
+				<br>
+			</div>
+			<div class="form-scroll">
+				
+				<!-- Fields for Model 1 -->
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="RestaurantsDelivery">Restaurants delivery:</label>
+					<input type="number" step="0.01" name="RestaurantsDelivery" class="form-control" required="">
+				</div>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="RestaurantsPriceRange2">Restaurants price range 2:</label>
+					<input type="number" step="0.01" name="RestaurantsPriceRange2" class="form-control" required="">
+				</div>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="WheelchairAccessible">Wheelchair Accessible:</label>
+					<input type="number" step="0.01" name="WheelchairAccessible" class="form-control" required="">
+				</div>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="WiFi">Wifi:</label>
+					<input type="number" step="0.01" name="WiFi" class="form-control" required="">
+				</div>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="avg_review_stars">Avg Review stars:</label>
+					<input type="number" step="0.01" name="avg_review_stars" class="form-control" required="">
+				</div>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="BikeParking">Bike Parking:</label>
+					<input type="number" step="0.01" name="BikeParking" class="form-control" required="">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="city">City:</label>
+					<input type="number" step="0.01" name="city" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="state">State:</label>
+					<input type="number" step="0.01" name="state" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="stars">Stars:</label>
+					<input type="number" step="0.01" name="stars" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="review_count_x">Review Count x:</label>
+					<input type="number" step="0.01" name="review_count_x" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="review_count_y">Review Count y:</label>
+					<input type="number" step="0.01" name="review_count_y" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="total_useful_votes">Total useful votes:</label>
+					<input type="number" step="0.01" name="total_useful_votes" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="elite_user_count">Elite user count:</label>
+					<input type="number" step="0.01" name="elite_user_count" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="review_count_per_bussiness">Review count per business:</label>
+					<input type="number" step="0.01" name="review_count_per_bussiness" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="avg_fans_per_reviewer">Avg fans per reviewer:</label>
+					<input type="number" step="0.01" name="avg_fans_per_reviewer" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="checkin_count">Checkin count:</label>
+					<input type="number" step="0.01" name="checkin_count" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="tip_count">Tip count:</label>
+					<input type="number" step="0.01" name="tip_count" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="total_compliments">Total compliments:</label>
+					<input type="number" step="0.01" name="total_compliments" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="OutdoorSeating">Outdoor seating:</label>
+					<input type="number" step="0.01" name="OutdoorSeating" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="BusinessAcceptsCreditCards">Business Accepts Credit card:</label>
+					<input type="number" step="0.01" name="BusinessAcceptsCreditCards" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="RestaurantsTakeOut">Restaurants takeout:</label>
+					<input type="number" step="0.01" name="RestaurantsTakeOut" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="Caters">Caters:</label>
+					<input type="number" step="0.01" name="Caters" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="BusinessParking">Business Parking:</label>
+					<input type="number" step="0.01" name="BusinessParking" class="form-control">
+				</div>
+				<div class="field-group model2 form-group" style="display: block;">
+					<label for="weekly_hours">Weekly hours:</label>
+					<input type="number" step="0.01" name="weekly_hours" class="form-control">
+				</div>
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
 </html>
