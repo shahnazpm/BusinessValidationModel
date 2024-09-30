@@ -1,13 +1,14 @@
-# BusinessValidationModel
-MECE Report
-STUDENT NAME-STUDENT CONTRIBUTION 
-VAMSI KRISHNA MARADANI-EXPLORATORY DATA ANALYSIS  
-PAVAN KUMAR PILLI -EXPLORATORY DATA ANALYSIS  
-ALEN CHARUVILA SAJI -DECISION TREE
-ANJU SUNNY CHUNGATH -DECISION TREE
-UTSAV HARSHADBHAI KHAMAR - RANDOM FOREST
-MOKSH NARESH JAISWAL - RANDOM FOREST
-SHAHNAZ PALAKUNNIL MOOSA - MERGING FILES, XGBOOST Model
-PRANAY SAI JANGETI - NO CONTRIBUTION
-ASHISH LAMA -ADA BOOST
-ARISH PANJWANI -ADA BOOST
+**Business Validation Model - MECE Report**
+
+| **Student Name**                | **Contribution**                    |
+|---------------------------------|-------------------------------------|
+| Vamsi Krishna Maradani          | Data Preprocessing                  |
+| Pavan Kumar Pilli               | Exploratory Data Analysis           |
+| Alen Charuvila Saji             | Decision Tree                       |
+| Anju Sunny Chungath             | Decision Tree                       |
+| Utsav Harshadbhai Khamar        | Random Forest                       |
+| Moksh Naresh Jaiswal            | Random Forest                       |
+| Shahnaz Palakunnil Moosa        | Merging Files, XGBoost Model        |
+| Pranay Sai Jangeti              | No Contribution                     |
+| Ashish Lama                     | AdaBoost                            |
+| Arish Panjwani                  | AdaBoost                            |
