@@ -42,19 +42,14 @@
             max-height: 400px; /* Adjust this height as needed */
             overflow-y: auto;
         }
-		
-		
 		</style>
 		<script>
         function showFields() {
-            // Hide all fields initially
             let fields = document.querySelectorAll('.field-group');
             fields.forEach(field => field.style.display = 'block');
 
-            // Get the selected model
             let model = document.getElementById('modelSelect').value;
 
-            // Show fields based on model selection
             if (model === 'model1') {
                 document.querySelectorAll('.model2').forEach(field => field.style.display = 'none');
             } 
@@ -84,39 +79,78 @@
 				<br>
 			</div>
 			<div class="form-scroll">
-				
+
 				<!-- Fields for Model 1 -->
 				<div class="field-group model1 form-group" style="display: block;">
-					<label for="RestaurantsDelivery">Restaurants delivery:</label>
-					<input type="number" step="0.01" name="RestaurantsDelivery" class="form-control" required="">
+					<label for="city">City:</label>
+					<input type="text" name="city" class="form-control">
 				</div>
+
 				<div class="field-group model1 form-group" style="display: block;">
-					<label for="RestaurantsPriceRange2">Restaurants price range 2:</label>
-					<input type="number" step="0.01" name="RestaurantsPriceRange2" class="form-control" required="">
-				</div>
-				<div class="field-group model1 form-group" style="display: block;">
-					<label for="WheelchairAccessible">Wheelchair Accessible:</label>
-					<input type="number" step="0.01" name="WheelchairAccessible" class="form-control" required="">
-				</div>
-				<div class="field-group model1 form-group" style="display: block;">
-					<label for="WiFi">Wifi:</label>
-					<input type="number" step="0.01" name="WiFi" class="form-control" required="">
+					<label for="state">State/Province:</label>
+					<input type="text" name="state" class="form-control">
 				</div>
 				<div class="field-group model1 form-group" style="display: block;">
 					<label for="avg_review_stars">Avg Review stars:</label>
-					<input type="number" step="0.01" name="avg_review_stars" class="form-control" required="">
+					<input type="number" step="0.5" name="avg_review_stars" class="form-control" required>
+				</div>
+				<div class="field-group model1 form-group" style="display: block;"></div>
+					<label for="isOpen">Is Open:</label><br>
+					<div>
+						<input type="radio" id="openYes" name="isOpen" value="1" required>
+						<label for="openYes">Yes</label>
+						<input type="radio" id="openNo" name="isOpen" value="0">
+						<label for="openNo">No</label>
+					</div>
+				</div>
+				<br/>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="RestaurantsDelivery">Restaurants Delivery:</label><br>
+					<div>
+						<input type="radio" id="deliveryYes" name="RestaurantsDelivery" value="1" required>
+						<label for="deliveryYes">Yes</label>
+						<input type="radio" id="deliveryNo" name="RestaurantsDelivery" value="0">
+						<label for="deliveryNo">No</label>
+					</div>
 				</div>
 				<div class="field-group model1 form-group" style="display: block;">
-					<label for="BikeParking">Bike Parking:</label>
-					<input type="number" step="0.01" name="BikeParking" class="form-control" required="">
+					<label for="RestaurantsPriceRange2">Restaurants Price Range 2:</label>
+					<select name="RestaurantsPriceRange2" class="form-control" required>
+						<option value="">--Select a Range--</option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="None">None</option>
+					</select>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="city">City:</label>
-					<input type="number" step="0.01" name="city" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="WheelchairAccessible">Wheelchair Accessible:</label><br>
+					<div>
+						<input type="radio" id="wheelchairYes" name="WheelchairAccessible" value="1" required>
+						<label for="wheelchairYes">Yes</label>
+						<input type="radio" id="wheelchairNo" name="WheelchairAccessible" value="0">
+						<label for="wheelchairNo">No</label>
+					</div>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="state">State:</label>
-					<input type="number" step="0.01" name="state" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="WiFi">WiFi:</label>
+					<div>
+						<input type="radio" id="wifiYes" name="WiFi" value="1" required>
+						<label for="wifiYes">Yes</label>
+						<input type="radio" id="wifiNo" name="WiFi" value="0">
+						<label for="wifiNo">No</label>
+					</div>
+				</div>
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="BikeParking">Bike Parking:</label><br>
+					<div>
+						<input type="radio" id="bikeYes" name="BikeParking" value="1" required>
+						<label for="bikeYes">Yes</label>
+						<input type="radio" id="bikeNo" name="BikeParking" value="0">
+						<label for="bikeNo">No</label>
+					</div>
 				</div>
 				<div class="field-group model2 form-group" style="display: block;">
 					<label for="stars">Stars:</label>
@@ -154,35 +188,67 @@
 					<label for="tip_count">Tip count:</label>
 					<input type="number" step="0.01" name="tip_count" class="form-control">
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="total_compliments">Total compliments:</label>
-					<input type="number" step="0.01" name="total_compliments" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="total_compliments">Total Compliments:</label><br>
+					<div>
+						<input type="radio" id="complimentsYes" name="total_compliments" value="1" required>
+						<label for="complimentsYes">Yes</label>
+						<input type="radio" id="complimentsNo" name="total_compliments" value="0">
+						<label for="complimentsNo">No</label>
+					</div>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="OutdoorSeating">Outdoor seating:</label>
-					<input type="number" step="0.01" name="OutdoorSeating" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="OutdoorSeating">Outdoor Seating:</label><br>
+					<div>
+						<input type="radio" id="outdoorYes" name="OutdoorSeating" value="1" required>
+						<label for="outdoorYes">Yes</label>
+						<input type="radio" id="outdoorNo" name="OutdoorSeating" value="0">
+						<label for="outdoorNo">No</label>
+					</div>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="BusinessAcceptsCreditCards">Business Accepts Credit card:</label>
-					<input type="number" step="0.01" name="BusinessAcceptsCreditCards" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="BusinessAcceptsCreditCards">Business Accepts Credit Cards:</label><br>
+					<div>
+						<input type="radio" id="creditYes" name="BusinessAcceptsCreditCards" value="1" required>
+						<label for="creditYes">Yes</label>
+						<input type="radio" id="creditNo" name="BusinessAcceptsCreditCards" value="0">
+						<label for="creditNo">No</label>
+					</div>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="RestaurantsTakeOut">Restaurants takeout:</label>
-					<input type="number" step="0.01" name="RestaurantsTakeOut" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;">
+					<label for="RestaurantsTakeOut">Restaurants Takeout:</label><br>
+					<div>
+						<input type="radio" id="takeoutYes" name="RestaurantsTakeOut" value="1" required>
+						<label for="takeoutYes">Yes</label>
+						<input type="radio" id="takeoutNo" name="RestaurantsTakeOut" value="0">
+						<label for="takeoutNo">No</label>
+					</div>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="Caters">Caters:</label>
-					<input type="number" step="0.01" name="Caters" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;"></div>
+					<label for="Caters">Caters:</label><br>
+					<div>
+						<input type="radio" id="catersYes" name="Caters" value="1" required>
+						<label for="catersYes">Yes</label>
+						<input type="radio" id="catersNo" name="Caters" value="0">
+						<label for="catersNo">No</label>
+					</div>
 				</div>
-				<div class="field-group model2 form-group" style="display: block;">
-					<label for="BusinessParking">Business Parking:</label>
-					<input type="number" step="0.01" name="BusinessParking" class="form-control">
+				<div class="field-group model1 form-group" style="display: block;"></div>
+					<label for="BusinessParking">Business Parking:</label><br>
+					<div>
+						<input type="radio" id="parkingYes" name="BusinessParking" value="1" required>
+						<label for="parkingYes">Yes</label>
+						<input type="radio" id="parkingNo" name="BusinessParking" value="0">
+						<label for="parkingNo">No</label>
+					</div>
 				</div>
+				<br/>
 				<div class="field-group model2 form-group" style="display: block;">
 					<label for="weekly_hours">Weekly hours:</label>
 					<input type="number" step="0.01" name="weekly_hours" class="form-control">
 				</div>
 			</div>
+			<br/>
 			<button type="submit">Submit</button>
 		</form>
 	</body>
